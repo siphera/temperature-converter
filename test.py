@@ -1,23 +1,29 @@
 from tkinter import *
 
-master = Tk()
-var = IntVar()
-var.set(1)
+window = Tk()
+window.geometry("550x400")
+window.title("Temperature Conversion")
+window.configure(bg="green")
 
-def quit_loop():
-    print("Selection:",var.get())
-    global selection
-    selection = var.get()
-    master.quit()
 
-Label(master, text = "Select OCR language").grid(row=0, sticky=W)
-Radiobutton(master, text = "default", variable=var, value = 1).grid(row=1, sticky=W)
-Radiobutton(master, text = "user-defined", variable=var, value = 2).grid(row=2, sticky=W)
-Button(master, text = "OK", command=quit_loop).grid(row=3, sticky=W)
+def number():
+    try:
+        float(my_input.get())
+        my_label.configure(text="it's a number")
+    except ValueError:
+        my_label.configure(text="it's not a number!")
 
-master.mainloop()
 
-if selection == 1:
-    print("My Value is equal to one.")
-elif selection == 2:
-    print("My value is equal to two.")
+my_input = Entry(window)
+my_input.pack(pady=10)
+
+my_button = Button(window, text="Click me!", command=number)
+my_button.pack(pady=10)
+
+my_label = Label(window)
+my_label.pack(pady=10)
+
+exit_button = Button(window, text="Exit", command=window.quit)
+exit_button.pack()
+
+window.mainloop()

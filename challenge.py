@@ -12,6 +12,7 @@ def convert_function():
         celsius = (c - 32) * (5 / 9)
         output_label.configure(text=celsius)
 
+
 def convert_function1():
     if radio_button2:
         f = int(float(celsius_input.get()))
@@ -35,8 +36,8 @@ def clear_function():
     celsius_input.delete(0, 'end')
     fahrenheit_input.delete(0, 'end')
     output_label.configure(text="")
-    # celsius_input.configure(state="disable")
-    # fahrenheit_input.configure(state="disable")
+    celsius_input.configure(state="disable")
+    fahrenheit_input.configure(state="disable")
     radio_button1.deselect()
     radio_button2.deselect()
 
@@ -76,7 +77,7 @@ clear_button = Button(window, text="Clear", bg="orange", activeforeground="orang
 clear_button.grid(row=4, column=0, pady=10)
 
 # Exit button
-exit_button = Button(window, text="Exit", bg="red", width=18, activeforeground="red", font=("arial", 15, "bold"), command=window.destroy)
+exit_button = Button(window, text="Exit", bg="red", width=18, activeforeground="red", font=("arial", 15, "bold"), command=window.quit)
 exit_button.grid(row=4, column=2, pady=10)
 
 window.mainloop()
