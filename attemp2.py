@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 window = Tk()
 window.geometry("280x320")
@@ -30,6 +31,14 @@ def clear_function():
     output_label.config(text="")
 
 
+def exit_confirm():
+    message_box = messagebox.askquestion ('Exit Application', 'Are you sure you want to exit the application')
+    if message_box == 'yes':
+        window.destroy()
+    else:
+        pass
+
+
 # Create a frame
 frame = LabelFrame(window, bg="pink", text="Celsius to fahrenheit", font=("arial", 10, "bold"), pady=45, padx=45)
 frame.grid(row=0, columnspan=2, padx=10, pady=10)
@@ -53,7 +62,7 @@ output_label.grid(row=2, columnspan=2, pady=10)
 # Clear and exit buttons
 clear_button = Button(window, text="Clear", bg="yellow", width=7, activeforeground="yellow", font=("arial", 15, "bold"), command=clear_function)
 clear_button.grid(row=3, column=0)
-exit_button = Button(window, text="Exit", bg="red", width=7, activeforeground="red", font=("arial", 15, "bold"), command=window.quit)
+exit_button = Button(window, text="Exit", bg="red", width=7, activeforeground="red", font=("arial", 15, "bold"), command=exit_confirm)
 exit_button.grid(row=3, column=1)
 
 window.mainloop()
